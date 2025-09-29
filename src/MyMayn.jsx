@@ -1,4 +1,4 @@
-import Btn from "./Btn";
+
 import { useState } from "react";
 
 const Languages = [
@@ -34,27 +34,23 @@ const Languages = [
   }
 ];
 
-const MyMain = () => {
+export default function MyMain() {
+
+    const [activeText, setActiveText] = useState(Languages[0]);
 
     return (
         <div className="container">
             <h1>Learn Web developent</h1>
             <div className="boxButton">
-            {Languages.map(Language => (
-                <Btn
-                id={Language.id}
-                titolo={Language.title}
-                ></Btn>
+            {Languages.map((Language, key) => (
+              <button onClick={()=> setActiveText(Language)} key={key} id={Language.id}  className="btn">{Language.title}</button>
             ))}    
             </div>
 
             <div className="textContainer">
-                <p>Descrizione</p>
-
+              <h2>{activeText.title}</h2>
+              <p>{activeText.description} </p>
             </div>
         </div>
     )
-
 }
-
-export default MyMain;
