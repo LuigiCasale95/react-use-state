@@ -1,5 +1,8 @@
+import Btn from "./Btn";
+import { useState } from "react";
+
 const Languages = [
-  {
+    {
     id: 1,
     title: "HTML",
     description: "HTML (HyperText Markup Language) è il linguaggio standard per creare pagine e applicazioni web. Struttura il contenuto web e fornisce elementi di base come titoli, paragrafi e immagini."
@@ -37,16 +40,17 @@ const MyMain = () => {
         <div className="container">
             <h1>Learn Web developent</h1>
             <div className="boxButton">
-                <button className="btn">HTML</button>
-                <button className="btn">CSS</button>
-                <button className="btn">JavaScript</button>
-                <button className="btn">Node.js</button>
-                <button className="btn">Express</button>
-                <button className="btn">ReactUS</button>
+            {Languages.map(Language => (
+                <Btn
+                id={Language.id}
+                titolo={Language.title}
+                ></Btn>
+            ))}    
             </div>
 
             <div className="textContainer">
-                
+                <p>Descrizione</p>
+
             </div>
         </div>
     )
